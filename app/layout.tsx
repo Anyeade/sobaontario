@@ -1,4 +1,5 @@
 import ThemeProviderWrapper from "@/components/Common/ThemeProvider";
+import TawkToWidget from "@/components/Common/TawkToWidget";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import { Inter } from "next/font/google";
@@ -72,13 +73,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`dark:bg-black ${inter.className}`} suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={`bg-white dark:bg-black ${inter.className}`} suppressHydrationWarning>
         <ThemeProviderWrapper>
           <AuthProvider>
             <CartProvider>
               <ToasterContext />
               {children}
+              <TawkToWidget />
             </CartProvider>
           </AuthProvider>
         </ThemeProviderWrapper>

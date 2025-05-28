@@ -147,4 +147,19 @@ export const eventRegistrations = pgTable("event_registrations", {
   status: text("status").default("interested"), // interested, confirmed, cancelled
   notes: text("notes"),
   createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const contactSubmissions = pgTable("contact_submissions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  fullName: text("full_name").notNull(),
+  emailAddress: text("email_address").notNull(),
+  subject: text("subject").notNull(),
+  phoneNumber: text("phone_number"),
+  message: text("message").notNull(),
+  consentGiven: boolean("consent_given").default(false),
+  status: text("status").default("new"), // new, read, responded, closed
+  adminNotes: text("admin_notes"),
+  respondedAt: timestamp("responded_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 }); 

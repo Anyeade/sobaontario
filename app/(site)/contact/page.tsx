@@ -1,11 +1,64 @@
-import { Metadata } from "next";
+"use client";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
-export const metadata: Metadata = {
-  title: "Contact Us - SOBA Ontario",
-  description: "Get in touch with SOBA Ontario. Contact information, office address, and inquiry form.",
-};
+interface ContactFormData {
+  fullName: string;
+  emailAddress: string;
+  subject: string;
+  message: string;
+}
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState<ContactFormData>({
+    fullName: "",
+    emailAddress: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          consentGiven: true, // Implied consent for contact page
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully! We'll get back to you soon.");
+        setFormData({
+          fullName: "",
+          emailAddress: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main>
       <section className="pb-20 pt-35 md:pt-40 xl:pb-25 xl:pt-46">
@@ -26,7 +79,7 @@ export default function ContactPage() {
                 Get in Touch
               </h2>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-start space-x-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                     <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,6 +140,7 @@ export default function ContactPage() {
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
                   </a>
+                  
                   <a
                     href="https://twitter.com/SobaOntario"
                     target="_blank"
@@ -100,6 +154,28 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
+
+              <div className="mt-8">
+                <h3 className="mb-4 font-semibold text-black dark:text-white">Need Immediate Help?</h3>
+                <a
+                  href="https://tawk.to/chat/6724fb522480f5b4f5977e86/1ibk7bf9c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-lg bg-primary px-6 py-3 font-medium text-white hover:bg-primary/90 transition-colors"
+                >
+                  <svg
+                    className="h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.39L2 22l5.61-1.05C9.96 21.64 11.46 22 13 22h7c1.1 0 2-.9 2-2V12c0-5.52-4.48-10-10-10zm0 18c-1.4 0-2.76-.35-3.95-1.01L7 19.5l.51-1.05C6.85 17.26 6.5 15.9 6.5 14.5c0-3.04 2.46-5.5 5.5-5.5s5.5 2.46 5.5 5.5S15.04 20 12 20z"/>
+                  </svg>
+                  Start Live Chat
+                </a>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  Get instant support from our team
+                </p>
+              </div>
             </div>
 
             {/* Contact Form */}
@@ -108,42 +184,32 @@ export default function ContactPage() {
                 Send us a Message
               </h2>
               
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-black dark:text-white mb-2">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-blacksection dark:border-strokedark dark:text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-black dark:text-white mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-blacksection dark:border-strokedark dark:text-white"
-                      required
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="fullName" className="block text-sm font-medium text-black dark:text-white mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-blacksection dark:border-strokedark dark:text-white"
+                    required
+                  />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-black dark:text-white mb-2">
+                  <label htmlFor="emailAddress" className="block text-sm font-medium text-black dark:text-white mb-2">
                     Email Address
                   </label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
+                    id="emailAddress"
+                    name="emailAddress"
+                    value={formData.emailAddress}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-blacksection dark:border-strokedark dark:text-white"
                     required
                   />
@@ -157,6 +223,8 @@ export default function ContactPage() {
                     type="text"
                     id="subject"
                     name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-blacksection dark:border-strokedark dark:text-white"
                     required
                   />
@@ -169,6 +237,8 @@ export default function ContactPage() {
                   <textarea
                     id="message"
                     name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-blacksection dark:border-strokedark dark:text-white"
                     required
@@ -177,9 +247,10 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>

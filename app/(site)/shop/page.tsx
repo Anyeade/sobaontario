@@ -30,6 +30,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Coat of Arms",
       description: "Official SOBA Ontario coat of arms - perfect for display in your home or office",
       price: "45.00",
+      imageUrl: "https://www.sobaontario.org/_next/image?url=%2Fimages%2Flogo%2Flogo.png&w=256&q=75",
       category: "Coat of Arms",
       inStock: true,
     },
@@ -38,6 +39,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Tie - Navy Blue",
       description: "Premium quality navy blue tie with SOBA Ontario emblem",
       price: "35.00",
+      imageUrl: "https://www.bandshoppe.com/img/271280-black-poly-satin-concert-neck-tie.jpg",
       category: "Ties",
       inStock: true,
     },
@@ -46,6 +48,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Dress Shirt",
       description: "High-quality dress shirt with embroidered SOBA Ontario logo",
       price: "55.00",
+      imageUrl: "https://www.logoai.com/uploads/resources/2025/01/14/5144bfc5e88666ebd035131144bbec85.png",
       category: "Shirts",
       inStock: true,
     },
@@ -54,6 +57,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Badge",
       description: "Official SOBA Ontario badge for formal occasions",
       price: "25.00",
+      imageUrl: "https://www.logoai.com/uploads/resources/2024/10/10/5784b1d4ee0f52417019b1cd5ed17653.png",
       category: "Badges",
       inStock: true,
     },
@@ -62,6 +66,7 @@ export default function ShopPage() {
       name: "SOBA Ontario T-Shirt",
       description: "Comfortable cotton t-shirt with SOBA Ontario design",
       price: "30.00",
+      imageUrl: "https://www.logoai.com/uploads/resources/2024/09/11/72cd69d95f905e5498ef44b9b7927e4a.png",
       category: "T-shirts",
       inStock: true,
     },
@@ -70,6 +75,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Polo Shirt",
       description: "Premium polo shirt with embroidered logo",
       price: "40.00",
+      imageUrl: "https://www.logoai.com/uploads/resources/2025/04/16/1bb35e2cfcc684118edf98d857d1e922.png",
       category: "Shirts",
       inStock: true,
     },
@@ -78,6 +84,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Mug",
       description: "Ceramic mug with SOBA Ontario logo - perfect for your morning coffee",
       price: "20.00",
+      imageUrl: "https://www.logoai.com/uploads/resources/2025/04/16/0bb94c313b78d0cf22f99e709c7a5d22.png",
       category: "Branded Merchandise",
       inStock: true,
     },
@@ -86,6 +93,7 @@ export default function ShopPage() {
       name: "SOBA Ontario Keychain",
       description: "Metal keychain with SOBA Ontario emblem",
       price: "15.00",
+      imageUrl: "https://www.logoai.com/uploads/resources/2024/06/13/17042986d0e6cdc5c35987f0e2602668.png",
       category: "Branded Merchandise",
       inStock: true,
     },
@@ -97,10 +105,25 @@ export default function ShopPage() {
         const response = await fetch("/api/store");
         if (response.ok) {
           const data = await response.json();
-          setItems(data.length > 0 ? data : sampleItems);
+          // Combine database items with sample items, avoiding duplicates
+          const combinedItems = [...data];
+          
+          // Add sample items that don't exist in database (by name)
+          const dbItemNames = data.map((item: StoreItem) => item.name.toLowerCase());
+          const uniqueSampleItems = sampleItems.filter(
+            (sampleItem) => !dbItemNames.includes(sampleItem.name.toLowerCase())
+          );
+          
+          combinedItems.push(...uniqueSampleItems);
+          setItems(combinedItems);
+          
+          if (data.length === 0) {
+            setError("Using sample data - no items in database yet");
+          }
         } else {
           // Use sample data if API fails
           setItems(sampleItems);
+          setError("Using sample data - database connection failed");
         }
       } catch (error) {
         console.error("Error fetching store items:", error);

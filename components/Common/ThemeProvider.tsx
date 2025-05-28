@@ -22,7 +22,7 @@ export default function ThemeProviderWrapper({ children }: ThemeProviderWrapperP
     <ThemeProvider
       enableSystem={false}
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="dark"
     >
       {children}
     </ThemeProvider>

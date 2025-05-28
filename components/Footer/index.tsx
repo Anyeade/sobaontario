@@ -40,7 +40,7 @@ const Footer = () => {
                 </Link>
 
                 <p className="mb-10 mt-5">
-                  Connecting Sasse Old Boys across Ontario, Canada. Building community, 
+                  Connecting Sasse Old Boys Association across Ontario, Canada. Building community, 
                   supporting education, and making a positive impact together.
                 </p>
 
@@ -198,21 +198,21 @@ const Footer = () => {
                   </p>
 
                   <div className="mb-6">
-                    <p className="mb-2 text-sm font-medium text-black dark:text-white">
-                      📍 Ontario, Canada
-                    </p>
-                    <p className="mb-2 text-sm text-gray-600 dark:text-gray-400">
-                      Serving Sasse Old Boys across the province
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Link
-                      href="/membership"
-                      className="inline-block rounded-lg bg-primary px-4 py-2 text-sm text-white transition-colors hover:bg-primary/90"
+                    <a
+                      href="https://tawk.to/chat/6724fb522480f5b4f5977e86/1ibk7bf9c"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-primary/90"
                     >
-                      Join SOBA Ontario
-                    </Link>
+                      <svg
+                        className="h-4 w-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.39L2 22l5.61-1.05C9.96 21.64 11.46 22 13 22h7c1.1 0 2-.9 2-2V12c0-5.52-4.48-10-10-10zm0 18c-1.4 0-2.76-.35-3.95-1.01L7 19.5l.51-1.05C6.85 17.26 6.5 15.9 6.5 14.5c0-3.04 2.46-5.5 5.5-5.5s5.5 2.46 5.5 5.5S15.04 20 12 20z"/>
+                      </svg>
+                      Live Chat Support
+                    </a>
                   </div>
                 </motion.div>
               </div>
