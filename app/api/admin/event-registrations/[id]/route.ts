@@ -13,7 +13,7 @@ const updateRegistrationSchema = z.object({
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -22,6 +22,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const { id } = await params;
     const body = await request.json();
     const validatedData = updateRegistrationSchema.parse(body);
 
@@ -31,7 +32,7 @@ export async function PATCH(
         status: validatedData.status,
         notes: validatedData.notes,
       })
-      .where(eq(eventRegistrations.id, params.id))
+      .where(eq(eventRegistrations.id, id))
       .returning();
 
     if (result.length === 0) {
@@ -50,7 +51,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -59,9 +60,11 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const { id } = await params;
+
     const result = await db
       .delete(eventRegistrations)
-      .where(eq(eventRegistrations.id, params.id))
+      .where(eq(eventRegistrations.id, id))
       .returning();
 
     if (result.length === 0) {
