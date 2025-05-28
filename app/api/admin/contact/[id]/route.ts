@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { contactSubmissions } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -13,7 +13,7 @@ const updateSchema = z.object({
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check if user is admin
@@ -25,6 +25,7 @@ export async function PATCH(
       );
     }
 
+    const { id } = await params;
     const body = await request.json();
     const validatedData = updateSchema.parse(body);
 
@@ -47,7 +48,7 @@ export async function PATCH(
     const updatedSubmission = await db
       .update(contactSubmissions)
       .set(updateData)
-      .where(eq(contactSubmissions.id, params.id))
+      .where(eq(contactSubmissions.id, id))
       .returning();
 
     if (updatedSubmission.length === 0) {

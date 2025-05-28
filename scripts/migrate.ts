@@ -5,10 +5,15 @@ import { neon } from '@neondatabase/serverless';
 async function runMigrations() {
   console.log('🔄 Running migrations...');
   
-  const sql = neon(process.env.DATABASE_URL!);
-  const db = drizzle(sql);
+  if (!process.env.DATABASE_URL) {
+    console.error('❌ DATABASE_URL environment variable is not set');
+    process.exit(1);
+  }
   
   try {
+    const sql = neon(process.env.DATABASE_URL);
+    const db = drizzle(sql);
+    
     await migrate(db, { migrationsFolder: './lib/db/migrations' });
     console.log('✅ Migrations completed successfully');
   } catch (error) {
