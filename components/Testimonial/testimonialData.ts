@@ -5,34 +5,34 @@ import { Testimonial } from "@/types/testimonial";
 export const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: "Devid Smith",
-    designation: "Founter @democompany",
+    name: "Martin Mote",
+    designation: "Founding Member, Class of '87",
     image: image1,
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit, ligula sit amet cursus tincidunt, lorem sem elementum nisi, convallis fringilla ante nibh non urna.",
+      "SOBA Ontario has been instrumental in helping me connect with fellow Sobans across Ontario. The support network we've built here is truly remarkable, and I'm proud to be part of this growing community.",
   },
   {
     id: 2,
-    name: "Jhon Abraham",
-    designation: "Founter @democompany",
+    name: "Elvis Nquenya",
+    designation: "Founding Member, Class of '87",
     image: image2,
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit, ligula sit amet cursus tincidunt, lorem sem elementum nisi, convallis fringilla ante nibh non urna.",
+      "From a small group in the GTA to over 30 active members province-wide, SOBA Ontario has exceeded our expectations. The financial support programs and community integration services make a real difference.",
   },
   {
     id: 3,
-    name: "Devid Smith",
-    designation: "Founter @democompany",
+    name: "Gerald Muchu",
+    designation: "Founding Member, Class of '87",
     image: image1,
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit, ligula sit amet cursus tincidunt, lorem sem elementum nisi, convallis fringilla ante nibh non urna.",
+      "The brotherhood we've maintained since our Sasse College days continues to thrive in Ontario. SOBA Ontario provides the perfect platform for professional networking and community support.",
   },
   {
     id: 4,
-    name: "Jhon Abraham",
-    designation: "Founter @democompany",
+    name: "Livinus Eleanya",
+    designation: "Founding Member, Class of '87",
     image: image2,
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit, ligula sit amet cursus tincidunt, lorem sem elementum nisi, convallis fringilla ante nibh non urna.",
+      "What started as informal gatherings has evolved into a registered non-profit organization that truly serves our community. The member benefits and support programs are comprehensive and meaningful.",
   },
 ];

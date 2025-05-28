@@ -1,0 +1,31 @@
+{
+  "name": "SOBA Ontario - Sasse Old Boys Association",
+  "short_name": "SOBA Ontario",
+  "description": "The official website of SOBA Ontario, connecting Sasse Old Boys in Ontario, Canada.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#006bff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/logo/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "social", "community"],
+  "lang": "en-CA",
+  "scope": "/",
+  "id": "soba-ontario"
+} 

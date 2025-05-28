@@ -11,9 +11,9 @@ const Blog = async () => {
         <div className="animate_top mx-auto text-center">
           <SectionHeader
             headerInfo={{
-              title: `NEWS & BLOGS`,
-              subtitle: `Latest News & Blogs`,
-              description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
+              title: `NEWS & UPDATES`,
+              subtitle: `Latest SOBA Ontario News`,
+              description: `Stay informed about our latest events, community initiatives, and member achievements. Discover how SOBA Ontario continues to make a positive impact across the province.`,
             }}
           />
         </div>

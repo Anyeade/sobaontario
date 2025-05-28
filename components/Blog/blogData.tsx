@@ -3,45 +3,45 @@ import { Blog } from "@/types/blog";
 const BlogData: Blog[] = [
   {
     _id: 1,
-    mainImage: "/images/blog/blog-01.png",
-    title: "Free advertising for your online business",
+    mainImage: "/images/gallery/DSCF8816.jpg",
+    title: "SOBA Ontario Annual General Meeting 2024 - A Great Success",
     metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+      "Our 2024 AGM brought together members from across Ontario to celebrate achievements and plan for the future.",
   },
   {
     _id: 2,
-    mainImage: "/images/blog/blog-02.png",
-    title: "9 simple ways to improve your design skills",
+    mainImage: "/images/gallery/IMG_20141211_173823.jpg",
+    title: "Community Outreach Program Reaches New Milestone",
     metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+      "SOBA Ontario's educational support initiative has now helped over 50 students in our community.",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-03.png",
-    title: "Tips to quickly improve your coding speed.",
+    _id: 3,
+    mainImage: "/images/gallery/DSCF7024.jpg",
+    title: "New Members Welcome Event - Building Stronger Connections",
     metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+      "We welcomed 15 new members to our growing SOBA Ontario family during our recent orientation event.",
   },
   {
-    _id: 1,
-    mainImage: "/images/blog/blog-03.png",
-    title: "Free advertising for your online business",
+    _id: 4,
+    mainImage: "/images/gallery/IMG_0305.jpg",
+    title: "SOBA Ontario Scholarship Fund Announcement",
     metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+      "Launching our new scholarship program to support deserving students from our community.",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-04.png",
-    title: "9 simple ways to improve your design skills",
+    _id: 5,
+    mainImage: "/images/gallery/DSCF8816 (1).jpg",
+    title: "Professional Networking Evening - Career Development Focus",
     metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+      "Members shared career insights and professional opportunities in our monthly networking session.",
   },
   {
-    _id: 2,
-    mainImage: "/images/blog/blog-01.png",
-    title: "Tips to quickly improve your coding speed.",
+    _id: 6,
+    mainImage: "/images/gallery/IMG_0301-75x50_c.jpg",
+    title: "SOBA Ontario Family Picnic 2024 - Community and Fun",
     metadata:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor.",
+      "Our annual family picnic brought together members and their families for a day of celebration and unity.",
   },
 ];
 

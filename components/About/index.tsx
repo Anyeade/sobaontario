@@ -29,16 +29,11 @@ const About = () => {
               className="animate_left relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
               <Image
-                src="/images/about/about-light-01.png"
-                alt="About"
-                className="dark:hidden"
+                src="/images/gallery/DSCF7024.jpg"
+                alt="SOBA Ontario Community"
+                className="rounded-lg"
                 fill
-              />
-              <Image
-                src="/images/about/about-dark-01.png"
-                alt="About"
-                className="hidden dark:block"
-                fill
+                style={{ objectFit: "cover" }}
               />
             </motion.div>
             <motion.div
@@ -61,19 +56,20 @@ const About = () => {
             >
               <span className="font-medium uppercase text-black dark:text-white">
                 <span className="mb-4 mr-4 inline-flex rounded-full bg-meta px-4.5 py-1 text-metatitle uppercase text-white ">
-                  New
+                  Est. 2016
                 </span>{" "}
-                SaaS Boilerplate for Next.js
+                Saint Joseph's College Sasse Alumni
               </span>
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                A Complete Solution for
+                Our Origin and
                 <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark">
-                  SaaS Startup
+                  Mission
                 </span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                ultricies lacus non fermentum ultrices. Fusce consectetur le.
+                SOBA Ontario was founded in 2016 by forward-thinking individuals from the Class of '87 
+                in the Greater Toronto Area. Initially a close-knit community, we evolved into a 
+                registered not-for-profit organization supporting all Sasse College alumni in Ontario.
               </p>
 
               <div className="mt-7.5 flex items-center gap-5">
@@ -84,9 +80,9 @@ const About = () => {
                 </div>
                 <div className="w-3/4">
                   <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
-                    React 18, Next.js 13 and TypeScript
+                    Community & Brotherhood
                   </h3>
-                  <p>Ut ultricies lacus non fermentum ultrices.</p>
+                  <p>Fostering lifelong relationships among Sobans across Ontario.</p>
                 </div>
               </div>
               <div className="mt-7.5 flex items-center gap-5">
@@ -97,9 +93,9 @@ const About = () => {
                 </div>
                 <div className="w-3/4">
                   <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
-                    Fully Customizable
+                    Member Support & Integration
                   </h3>
-                  <p>consectetur adipiscing elit fermentum ultricies.</p>
+                  <p>Helping new Sobans integrate into Canadian life and community.</p>
                 </div>
               </div>
             </motion.div>
@@ -131,25 +127,26 @@ const About = () => {
               className="animate_left md:w-1/2"
             >
               <h4 className="font-medium uppercase text-black dark:text-white">
-                Launch Your SaaS Fast
+                Our Core Values
               </h4>
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                Packed with All Essential {"   "}
+                Guided by {"   "}
                 <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark">
-                  Integrations
+                  Integrity & Service
                 </span>
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                ultricies lacus non fermentum ultrices. Fusce consectetur le.
+                Our association is built on the foundation of integrity, service, equality, 
+                connection, community, brotherhood, leadership, pride, and lifelong learning. 
+                These values guide everything we do.
               </p>
               <div>
                 <a
-                  href="#"
+                  href="/membership"
                   className="group mt-7.5 inline-flex items-center gap-2.5 text-black hover:text-primary dark:text-white dark:hover:text-primary"
                 >
                   <span className="duration-300 group-hover:pr-2">
-                    Know More
+                    Join Our Community
                   </span>
                   <svg
                     width="14"
@@ -181,16 +178,11 @@ const About = () => {
               className="animate_right relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
               <Image
-                src="./images/about/about-light-02.svg"
-                alt="About"
-                className="dark:hidden"
+                src="/images/gallery/IMG_20141211_173823.jpg"
+                alt="SOBA Ontario Values"
+                className="rounded-lg"
                 fill
-              />
-              <Image
-                src="./images/about/about-dark-02.svg"
-                alt="About"
-                className="hidden dark:block"
-                fill
+                style={{ objectFit: "cover" }}
               />
             </motion.div>
           </div>

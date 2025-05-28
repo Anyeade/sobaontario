@@ -1,91 +1,176 @@
-# Solid - Free Next.js Web Template and Starter Kit for SaaS
+# SOBA Ontario Website
 
-Solid is a free Next.js template specifically crafted for startups, SaaS, and software websites. It provides an extensive array of necessary sections, elements, and pages required to build a fully-equipped website for any SaaS, software, or startup site. Comes with all cutting edge React and Next.js features - **Built with Next.js 13, React 18 and TypeScript.**
+The official website for SOBA Ontario (Saint Joseph's College Sasse Alumni Association), a registered not-for-profit organization supporting Sasse College alumni in Ontario, Canada.
 
-This Next.js template's homepage comes with an awesome hero area, logos of associated brands, a features section, an about section, another features section with tabs, counters, and star ratings, integration options, clear call-to-actions, an FAQ section with accordions, a testimonials section, pricing tables, a contact page, a blog, and a distinctive footer.
+## Features
 
-**Solid Next.js template packed with all necessary external pages** - such as login, registration, blog grids, and single blog pages, among others. This broad collection of pages provides all the necessary tools to create a feature-packed, comprehensive, and visually appealing website or landing page for software, a web application, or SaaS.
+- **Membership Registration**: Secure online membership registration with Stripe payment integration
+- **Donation System**: Multi-category donation platform supporting various community initiatives
+- **Member Benefits**: Comprehensive benefits including financial assistance, death benefits, and educational support
+- **Community Features**: Event management, news updates, and member networking
+- **Responsive Design**: Modern, mobile-first design built with Next.js and Tailwind CSS
+- **Database Integration**: Neon PostgreSQL database with Drizzle ORM for efficient data management
 
-### [🔥 Get Solid Pro - Next.js SaaS Boilerplate and Starter Kit](https://nextjstemplates.com/templates/solid)
+## Tech Stack
 
-### [🚀 Solid PRO Live Demo](https://solid.nextjstemplates.com/)
+- **Framework**: Next.js 15.1.6 with React 19
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4.1.3
+- **Database**: Neon PostgreSQL with Drizzle ORM
+- **Payments**: Stripe Checkout for memberships and donations
+- **Animations**: Framer Motion
+- **Package Manager**: pnpm
 
-### [🚀 Solid FREE Live Demo](https://solid-free.nextjstemplates.com/)
+## Getting Started
 
-### Solid PRO vs Solid FREE Comparison 📊
+### Prerequisites
 
-#### [Solid PRO](https://solid.nextjstemplates.com/)
-- SaaS Boilerplate + Starter Kit with Essential Integrations and Functionalities
-- Essential Integrations: Auth, DB, Stripe, MDX and More ...
-- Fully Functional, Ready to Use Sanity Blog Support
-- Premium Email Support
-- Functional External Pages
-- Free Lifetime Future Updates
-___
-#### [Solid FREE](https://solid-free.nextjstemplates.com/)
-- Only UI - Coded for Next.js
-- No Integrations
-- No Functional Blogging System
-- External Pages without Functions/Integrations
-- Community Support
-- Free Lifetime Future Updates
-___
+- Node.js 18+ 
+- pnpm package manager
+- Neon database account
+- Stripe account
 
-### [📦 Download](https://nextjstemplates.com/templates/solid)
+### Installation
 
-### [🔥 Get Pro](https://nextjstemplates.com/templates/solid)
-
-### [🔌 Documentation](https://nextjstemplates.com/docs)
-
-### ⚡ Deploy Now
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNextJSTemplates%2Fsolid-nextjs)
-
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/NextJSTemplates/solid-nextjs)
-
-
-## Installation
-
-Here are the steps you need to follow to install the dependencies.
-
-1.Download and extract the template from **Next.js Templates.**
-
-2.**cd** into the template directory then run this command to install all the dependencies
-    
+1. Clone the repository:
 ```bash
-    npm install --legacy-peer-deps
+git clone <repository-url>
+cd soba-ontario-website
 ```
-**Note:** As of right now React 19 causes peer dependencies issues with some packages, so the `legacy-peer-deps` flag is required.
 
-You can start the project on the local server
-    
+2. Install dependencies:
 ```bash
-    npm run dev
- ```
+pnpm install
+```
 
-It’ll start the template on [localhost:3000](http://localhost:3000). 
+3. Set up environment variables:
+Create a `.env.local` file in the root directory with the following variables:
 
-The documentation includes all the guides you need for the integrations. 
+```env
+# Database
+DATABASE_URL="your_neon_database_url_here"
 
+# Stripe
+STRIPE_SECRET_KEY="your_stripe_secret_key_here"
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="your_stripe_publishable_key_here"
+STRIPE_WEBHOOK_SECRET="your_stripe_webhook_secret_here"
 
-### Deploying on PaaS
+# App
+NEXT_PUBLIC_APP_URL="https://www.sobaontario.org"
+```
 
-If you are using a GitHub repo then you can go with free-of-cost and easy-to-use options like [Vercel](https://vercel.com/), or [Netlify](https://netlify.com/) they offer decent-free tiers for Next.js hosting.
+4. Generate and run database migrations:
+```bash
+pnpm db:generate
+pnpm db:migrate
+```
 
-### 📄 License
-Solid Free is 100% free and open-source, feel free to use with your personal and commercial projects.
+5. Start the development server:
+```bash
+pnpm dev
+```
 
-### 💜 Support
-If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
+The application will be available at `http://localhost:3000`.
 
-### ✨ Browse and Download - Best Free [Next.js Templates](https://nextjstemplates.com/templates)
+## Database Schema
 
-### Update Log
+The application uses the following main tables:
 
-**10 April 2025**
-- Update eslint to v9.24.0 to resolve peer deps warning during installation.
-- Migrate to tailwind v4
+- **members**: Member registration and payment information
+- **donations**: Donation records and payment tracking
+- **events**: Community events and activities
+- **news**: News articles and announcements
+- **store_items**: SOBA Ontario merchandise
 
-**29 Jan 2025**
-- Upgraded to Next.js 15
-- Update framer-motion to v12.0.6 for React 19 support.
+## Stripe Integration
+
+### Membership Payments
+- One-time $100 CAD registration fee
+- Automatic member record creation and payment tracking
+- Email confirmation and receipt generation
+
+### Donations
+- Multiple donation categories (Sports & Recreation, Volunteer Programs, etc.)
+- Flexible amount selection with predefined options
+- Optional donor information for recognition
+
+### Webhook Configuration
+Set up a Stripe webhook endpoint at `/api/webhooks/stripe` to handle:
+- `checkout.session.completed`: Update payment status
+- `checkout.session.expired`: Handle failed payments
+
+## Deployment
+
+### Environment Setup
+1. Set up a Neon database and obtain the connection URL
+2. Configure Stripe keys for production
+3. Set the correct `NEXT_PUBLIC_APP_URL` for your domain
+
+### Build and Deploy
+```bash
+pnpm build
+pnpm start
+```
+
+## Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── (site)/            # Main site pages
+│   ├── api/               # API routes
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── About/            # About section
+│   ├── Donations/        # Donation forms and pages
+│   ├── Features/         # Features showcase
+│   ├── Header/           # Navigation header
+│   ├── Hero/             # Hero section
+│   ├── Membership/       # Membership forms
+│   └── ...               # Other components
+├── lib/                  # Utility libraries
+│   ├── db/              # Database configuration and schema
+│   └── stripe.ts        # Stripe configuration
+├── public/              # Static assets
+└── types/               # TypeScript type definitions
+```
+
+## SOBA Ontario Information
+
+### Mission
+We encourage harmony and cooperation among Sobans in Ontario, addressing members' social and economic needs while facilitating integration into the Canadian community.
+
+### Core Values
+- Integrity
+- Service  
+- Equality
+- Connection
+- Community
+- Brotherhood
+- Leadership
+- Pride
+- Lifelong Learning
+
+### Membership Benefits
+- $5,000 member death benefit
+- Financial Emergency Assistance Program (up to $1,000)
+- $500 childbirth benefit
+- $500 immediate family member death benefit
+- Educational Achievement Benefits ($150-$250)
+- Wedding milestone celebrations ($150)
+- Hospitalization support ($200)
+- DHR (Diaspora Home Return) enrollment
+
+### Contact Information
+- **Address**: 46 Olde town Road, Brampton, ON, L6X 4T8
+- **Phone**: 226-606-0197
+- **Website**: www.sobaontario.org
+- **Facebook**: https://www.facebook.com/profile.php?id=100077660994849
+- **Twitter**: @SobaOntario
+
+## Contributing
+
+This website is maintained by SOBA Ontario. For contributions or issues, please contact the organization directly.
+
+## License
+
+© 2025 SOBA Ontario. All rights reserved.

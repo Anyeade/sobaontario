@@ -11,6 +11,7 @@ const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const pathUrl = usePathname();
 
@@ -24,8 +25,36 @@ const Header = () => {
   };
 
   useEffect(() => {
+    setMounted(true);
+    
+    if (typeof window !== "undefined") {
     window.addEventListener("scroll", handleStickyMenu);
-  });
+      
+      return () => {
+        window.removeEventListener("scroll", handleStickyMenu);
+      };
+    }
+  }, []);
+
+  if (!mounted) {
+    return (
+      <header className="fixed left-0 top-0 z-99999 w-full py-7">
+        <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+          <div className="flex w-full items-center justify-between xl:w-1/4">
+            <a href="/">
+              <Image
+                src="/images/logo/logo.png"
+                alt="SOBA Ontario Logo"
+                width={150}
+                height={60}
+                className="w-auto h-12"
+              />
+            </a>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header
@@ -39,18 +68,11 @@ const Header = () => {
         <div className="flex w-full items-center justify-between xl:w-1/4">
           <a href="/">
             <Image
-              src="/images/logo/logo-dark.svg"
-              alt="logo"
-              width={119.03}
-              height={30}
-              className="hidden w-full dark:block"
-            />
-            <Image
-              src="/images/logo/logo-light.svg"
-              alt="logo"
-              width={119.03}
-              height={30}
-              className="w-full dark:hidden"
+              src="/images/logo/logo.png"
+              alt="SOBA Ontario Logo"
+              width={150}
+              height={60}
+              className="w-auto h-12"
             />
           </a>
 
@@ -155,17 +177,17 @@ const Header = () => {
             <ThemeToggler />
 
             <Link
-              href="https://github.com/NextJSTemplates/solid-nextjs"
+              href="/membership"
               className="text-regular font-medium text-waterloo hover:text-primary"
             >
-              GitHub Repo 🌟
+              Join Us 🎓
             </Link>
 
             <Link
-              href="https://nextjstemplates.com/templates/solid"
+              href="/donations"
               className="flex items-center justify-center rounded-full bg-primary px-7.5 py-2.5 text-regular text-white duration-300 ease-in-out hover:bg-primaryho"
             >
-              Get Pro 🔥
+              Donate 💝
             </Link>
           </div>
         </div>

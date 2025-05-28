@@ -1,7 +1,9 @@
+"use client";
 import { useEffect, useState } from "react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Top: 0 takes us all the way back to the top of the page
   // Behavior: smooth keeps it smooth!
@@ -13,6 +15,8 @@ export default function ScrollToTop() {
   };
 
   useEffect(() => {
+    setMounted(true);
+    
     // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -22,10 +26,16 @@ export default function ScrollToTop() {
       }
     };
 
+    if (typeof window !== "undefined") {
     window.addEventListener("scroll", toggleVisibility);
 
     return () => window.removeEventListener("scroll", toggleVisibility);
+    }
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="z-99 fixed bottom-8 right-8">

@@ -9,72 +9,69 @@ const menuData: Menu[] = [
   },
   {
     id: 2,
-    title: "Features",
+    title: "About",
     newTab: false,
-    path: "/#features",
+    path: "/#about",
+  },
+  
+  
+  {
+    id: 4,
+    title: "Gallery",
+    newTab: false,
+    path: "/gallery",
   },
   {
-    id: 2.1,
-    title: "Blog",
+    id: 5,
+    title: "Shop",
     newTab: false,
-    path: "/blog",
+    path: "/shop",
   },
   {
-    id: 2.3,
-    title: "Docs",
+    id: 6,
+    title: "News",
     newTab: false,
-    path: "/docs",
+    path: "/news",
   },
   {
-    id: 3,
-    title: "Pages",
+    id: 8,
+    title: "Contact",
+    newTab: false,
+    path: "/contact",
+  },
+  {
+    id: 7,
+    title: "Get Involved",
     newTab: false,
     submenu: [
       {
-        id: 31,
-        title: "Blog Grid",
+        id: 3,
+        title: "Membership",
         newTab: false,
-        path: "/blog",
+        path: "/membership",
       },
       {
-        id: 34,
-        title: "Sign In",
+        id: 71,
+        title: "Volunteer Programs",
         newTab: false,
-        path: "/auth/signin",
+        path: "/volunteer",
       },
       {
-        id: 35,
-        title: "Sign Up",
+        id: 72,
+        title: "Community Outreach",
         newTab: false,
-        path: "/auth/signup",
+        path: "/outreach",
       },
       {
-        id: 35,
-        title: "Docs",
+        id: 73,
+        title: "Events",
         newTab: false,
-        path: "/docs",
+        path: "/events",
       },
-      {
-        id: 35.1,
-        title: "Support",
-        newTab: false,
-        path: "/support",
-      },
-      {
-        id: 36,
-        title: "404",
-        newTab: false,
-        path: "/error",
-      },
+      
     ],
   },
-
-  {
-    id: 4,
-    title: "Support",
-    newTab: false,
-    path: "/support",
-  },
+ 
 ];
 
 export default menuData;

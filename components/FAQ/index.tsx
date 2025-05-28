@@ -51,7 +51,7 @@ const FAQ = () => {
               className="animate_left md:w-2/5 lg:w-1/2"
             >
               <span className="font-medium uppercase text-black dark:text-white">
-                OUR FAQS
+                SOBA ONTARIO FAQS
               </span>
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
                 Frequently Asked
@@ -61,10 +61,10 @@ const FAQ = () => {
               </h2>
 
               <a
-                href="#"
+                href="/contact"
                 className="group mt-7.5 inline-flex items-center gap-2.5 text-black hover:text-primary dark:text-white dark:hover:text-primary"
               >
-                <span className="duration-300 group-hover:pr-2">Know More</span>
+                <span className="duration-300 group-hover:pr-2">Contact Us</span>
                 <svg
                   width="14"
                   height="14"

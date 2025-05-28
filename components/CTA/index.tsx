@@ -29,12 +29,12 @@ const CTA = () => {
               className="animate_left md:w-[70%] lg:w-1/2"
             >
               <h2 className="mb-4 w-11/12 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle4">
-                Join With Us Today & Increase Your Productivity
+                Join SOBA Ontario Today & Strengthen Our Community
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                convallis tortor eros. Donec vitae tortor lacus. Phasellus
-                aliquam ante in maximus.
+                Connect with fellow Sasse College alumni across Ontario. Together, we support 
+                education, foster brotherhood, and make a positive impact in our communities. 
+                Your membership helps us continue our mission of unity and service.
               </p>
             </motion.div>
             <motion.div
@@ -60,14 +60,14 @@ const CTA = () => {
                   width={299}
                   height={299}
                   src="/images/shape/shape-06.png"
-                  alt="Saly"
+                  alt="Community"
                   className="hidden xl:block"
                 />
                 <a
-                  href="/auth/signup"
+                  href="/membership"
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 dark:bg-white dark:text-black"
                 >
-                  Sign up free
+                  Become a Member
                   <Image
                     width={20}
                     height={20}

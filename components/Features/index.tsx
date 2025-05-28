@@ -13,11 +13,10 @@ const Feature = () => {
           {/* <!-- Section Title Start --> */}
           <SectionHeader
             headerInfo={{
-              title: "SOLID FEATURES",
-              subtitle: "Core Features of Solid",
-              description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-            convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam
-            ante in maximus.`,
+              title: "SOBA ONTARIO BENEFITS",
+              subtitle: "What We Offer Our Members",
+              description: `SOBA Ontario provides comprehensive support and benefits to our members, 
+              fostering community, professional growth, and lifelong connections among Sasse College alumni.`,
             }}
           />
           {/* <!-- Section Title End --> */}
