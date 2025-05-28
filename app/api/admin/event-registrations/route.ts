@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { eventRegistrations, members } from "@/lib/db/schema";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, SQL } from "drizzle-orm";
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     const eventId = searchParams.get('eventId');
     const status = searchParams.get('status');
 
-    let whereConditions = [];
+    const whereConditions: SQL<unknown>[] = [];
     
     if (eventId) {
       whereConditions.push(eq(eventRegistrations.eventId, eventId));
