@@ -1,40 +1,25 @@
-# SOBA Ontario Authentication & Admin System Setup Guide
+# Authentication System Setup - SOBA Ontario
 
-## Overview
-This guide covers the complete authentication system and admin dashboard implementation for the SOBA Ontario website.
+This document outlines the complete authentication system implementation for the SOBA Ontario website, including member registration, login, admin dashboard, and role-based access control.
 
-## What We've Built
+## Features Implemented
 
-### 1. Authentication System
-- **NextAuth.js** integration with credentials provider
-- **Database schema** updated with authentication fields
-- **Member login/profile** system
-- **Role-based access control** (member, admin, super_admin)
-- **Session management** with JWT tokens
+### 1. Member Authentication
+- **Registration** through membership payment flow
+- **Login/Logout** with email and password
+- **Password hashing** using bcrypt
+- **Session management** with NextAuth.js
+- **Profile management** for logged-in members
 
-### 2. Database Schema Updates
-- Added authentication fields to members table:
-  - `password` - hashed password storage
-  - `isActive` - account status
-  - `role` - user role (member, admin, super_admin)
-  - `profileImage` - profile picture URL
-  - `emailVerified` - email verification timestamp
-  - `lastLogin` - last login tracking
+### 2. Role-Based Access Control
+- **Member role** - access to profile and member features
+- **Admin role** - access to admin dashboard and management features
+- **Super Admin role** - full system access
 
-- Added NextAuth required tables:
-  - `accounts` - OAuth provider accounts
-  - `sessions` - user sessions
-  - `verificationTokens` - email verification tokens
-
-- Added store management tables:
-  - `storeOrders` - order management
-  - Updated `storeItems` with inventory tracking
-
-### 3. Member Features
-- **Login page** (`/auth/signin`) - secure authentication
-- **Profile page** (`/profile`) - view and edit personal information
-- **Membership status** - payment and account status tracking
-- **Protected routes** - automatic redirection for unauthenticated users
+### 3. Hardcoded Admin Access
+- **Email**: `admin@sobaontario.org`
+- **Password**: `Mnbvcxzl@5`
+- **Role**: `super_admin`
 
 ### 4. Admin Dashboard
 - **Admin layout** with sidebar navigation
@@ -169,10 +154,18 @@ pnpm db:migrate
 
 ## Testing the System
 
-### Create Test Admin User:
-1. Register a new member through the signup form
-2. Manually update the database to set `role = 'admin'`
-3. Login and access `/admin`
+### Test Admin Login:
+1. Go to `/auth/signin`
+2. Use these credentials:
+   - **Email**: `admin@sobaontario.org`
+   - **Password**: `Mnbvcxzl@5`
+3. You should be redirected to `/admin` dashboard
+
+### Create Test Member:
+1. Register a new member through `/membership`
+2. Complete the payment process
+3. Login with the member credentials
+4. Access `/profile` to test member features
 
 ### Test Member Features:
 1. Register as a regular member

@@ -1,9 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
-import { db } from "@/lib/db";
-import { members, donations } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+// import { stripe } from "@/lib/stripe";
+// import { db } from "@/lib/db";
+// import { members, donations } from "@/lib/db/schema";
+// import { eq } from "drizzle-orm";
 
+// NOTE: This webhook endpoint is no longer needed when using the direct payment verification approach.
+// The new implementation uses /api/donations/verify-payment and /api/membership/verify-payment
+// to check payment status directly from the success pages.
+
+export async function POST(request: NextRequest) {
+  // Webhook functionality disabled - using direct verification instead
+  return NextResponse.json({ 
+    message: "Webhook endpoint disabled. Using direct payment verification instead." 
+  }, { status: 200 });
+}
+
+/* 
+// Original webhook implementation (commented out)
 export async function POST(request: NextRequest) {
   const body = await request.text();
   const signature = request.headers.get("stripe-signature");
@@ -82,4 +95,5 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}
+*/ 

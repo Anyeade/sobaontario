@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import MembershipForm from "@/components/Membership/MembershipForm";
 
 export const metadata: Metadata = {
@@ -15,9 +16,21 @@ export default function MembershipPage() {
             <h1 className="mb-5 text-3xl font-bold text-black dark:text-white xl:text-hero">
               Join SOBA Ontario
             </h1>
-            <p className="mb-10 text-lg">
+            <p className="mb-6 text-lg">
               Become part of our thriving community of over 30 active Sasse College alumni across Ontario
             </p>
+            
+            <div className="mb-10 rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Already a member?{" "}
+                <Link 
+                  href="/auth/signin" 
+                  className="font-medium text-primary hover:text-primary/80 underline"
+                >
+                  Sign in to your account
+                </Link>
+              </p>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
