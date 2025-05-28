@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const thisMonthResult = await db
       .select({ count: count() })
       .from(eventRegistrations)
-      .where(gte(eventRegistrations.registrationDate, firstDayOfMonth.toISOString()));
+      .where(gte(eventRegistrations.registrationDate, firstDayOfMonth));
     
     const thisMonthRegistrations = thisMonthResult[0]?.count || 0;
 
