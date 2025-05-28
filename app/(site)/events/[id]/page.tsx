@@ -177,13 +177,14 @@ const allEvents = [
 ];
 
 interface EventPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
-  const event = allEvents.find(e => e.id === parseInt(params.id));
+  const { id } = await params;
+  const event = allEvents.find(e => e.id === parseInt(id));
   
   if (!event) {
     return {
@@ -198,15 +199,16 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   };
 }
 
-export default function EventDetailPage({ params }: EventPageProps) {
-  const event = allEvents.find(e => e.id === parseInt(params.id));
+export default async function EventDetailPage({ params }: EventPageProps) {
+  const { id } = await params;
+  const event = allEvents.find(e => e.id === parseInt(id));
 
   if (!event) {
     notFound();
   }
 
   const isPastEvent = new Date(event.dateISO) < new Date();
-  const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://sobaontario.org'}/events/${params.id}`;
+  const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://sobaontario.org'}/events/${id}`;
 
   return (
     <main>
@@ -274,7 +276,7 @@ export default function EventDetailPage({ params }: EventPageProps) {
               {!isPastEvent && (
                 <div className="flex flex-wrap gap-4">
                   <RegisterInterestButton
-                    eventId={params.id}
+                    eventId={id}
                     eventTitle={event.title}
                     className="rounded-lg bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90"
                   />
