@@ -44,10 +44,15 @@ export async function POST(request: NextRequest) {
     const validatedData = createSchema.parse(body);
 
     const newArticle = await db.insert(news).values({
-      ...validatedData,
+      title: validatedData.title,
+      excerpt: validatedData.excerpt,
+      content: validatedData.content,
+      author: validatedData.author,
+      category: validatedData.category,
+      tags: JSON.stringify(validatedData.tags),
+      isPublished: validatedData.isPublished,
+      featuredImage: validatedData.featuredImage,
       publishedAt: validatedData.isPublished ? new Date() : null,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     }).returning();
 
     return NextResponse.json(newArticle[0], { status: 201 });

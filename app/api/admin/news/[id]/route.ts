@@ -64,9 +64,18 @@ export async function PATCH(
     const validatedData = updateSchema.parse(body);
 
     const updateData: any = {
-      ...validatedData,
       updatedAt: new Date(),
     };
+
+    // Handle each field individually to ensure proper types
+    if (validatedData.title !== undefined) updateData.title = validatedData.title;
+    if (validatedData.excerpt !== undefined) updateData.excerpt = validatedData.excerpt;
+    if (validatedData.content !== undefined) updateData.content = validatedData.content;
+    if (validatedData.author !== undefined) updateData.author = validatedData.author;
+    if (validatedData.category !== undefined) updateData.category = validatedData.category;
+    if (validatedData.tags !== undefined) updateData.tags = JSON.stringify(validatedData.tags);
+    if (validatedData.isPublished !== undefined) updateData.isPublished = validatedData.isPublished;
+    if (validatedData.featuredImage !== undefined) updateData.featuredImage = validatedData.featuredImage;
 
     // Handle publishedAt field
     if (validatedData.publishedAt !== undefined) {
