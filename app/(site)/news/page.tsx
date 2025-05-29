@@ -20,7 +20,7 @@ const newsArticles = [
   {
     id: 3,
     title: "SOBA Ontario Initial Launch",
-    excerpt: "SOBA Ontario was officially launched our website  on May 27, 2025, with a special event at the Sasse community center",
+    excerpt: "SOBA Ontario officially launched its website on May 27, 2025, with a special event at the Sasse community center",
     date: "May 27, 2025",
     image: "/images/gallery/initial-launch.jpg",
     category: "Community",
