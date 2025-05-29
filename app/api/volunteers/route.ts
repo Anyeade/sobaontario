@@ -27,18 +27,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Combine additional info into experience field
+    let combinedExperience = experience || "";
+    if (motivation) {
+      combinedExperience += combinedExperience ? `\n\nMotivation: ${motivation}` : `Motivation: ${motivation}`;
+    }
+    if (skills) {
+      combinedExperience += combinedExperience ? `\n\nSkills: ${skills}` : `Skills: ${skills}`;
+    }
+    if (address) {
+      combinedExperience += combinedExperience ? `\n\nAddress: ${address}` : `Address: ${address}`;
+    }
+
     // Insert volunteer application into database
     const newVolunteer = await db.insert(volunteers).values({
       fullName,
       emailAddress,
-      phoneNumber,
-      address,
-      volunteerAreas: JSON.stringify(volunteerAreas), // Store as JSON string
-      availability,
-      experience,
-      motivation,
-      skills,
-      isMember: isMember || false,
+      telephoneNumber: phoneNumber || null,
+      interests: Array.isArray(volunteerAreas) ? JSON.stringify(volunteerAreas) : volunteerAreas,
+      availability: availability || null,
+      experience: combinedExperience || null,
       status: "pending"
     }).returning();
 
