@@ -49,9 +49,24 @@ const Footer = () => {
                 </p>
                 <a
                   href="mailto:info@sobaontario.org"
-                  className="text-itemtitle font-medium text-black dark:text-white hover:text-primary"
+                  className="mb-3 block text-itemtitle font-medium text-black dark:text-white hover:text-primary"
                 >
                   info@sobaontario.org
+                </a>
+                
+                <div className="mb-3">
+                  <p className="text-itemtitle font-medium text-black dark:text-white">
+                    46 Olde Town Road<br />
+                    Brampton, ON, L6X 4T8<br />
+                    Canada
+                  </p>
+                </div>
+                
+                <a
+                  href="tel:226-606-0197"
+                  className="text-itemtitle font-medium text-black dark:text-white hover:text-primary"
+                >
+                  226-606-0197
                 </a>
               </motion.div>
 

@@ -33,13 +33,6 @@ const upcomingEvents = [
 
 const pastEvents = [
   {
-    id: 5,
-    title: "Christmas Celebration 2024",
-    date: "December 16, 2024",
-    description: "A wonderful evening of celebration with traditional dishes, music, and fellowship.",
-    image: "/images/gallery/DSCF7024.jpg",
-  },
-  {
     id: 7,
     title: "Professional Networking Evening",
     date: "September 14, 2024",
@@ -67,7 +60,6 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
-
       {/* Upcoming Events */}
       <section className="pb-20 pt-10 lg:pb-25 lg:pt-15 xl:pb-30 xl:pt-20">
         <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
