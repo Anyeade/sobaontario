@@ -46,7 +46,7 @@ const ProductCard = ({ id, name, description, price, imageUrl, category, inStock
       className="animate_top rounded-lg bg-white p-6 shadow-solid-8 dark:bg-blacksection"
     >
       {/* Product Image */}
-      <div className="mb-4 aspect-square overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+      <div className="mb-4 aspect-square overflow-hidden rounded-lg bg-gray-100">
         {imageUrl ? (
           <Image
             src={imageUrl}
