@@ -12,7 +12,7 @@ const newsArticles = [
     id: 1,
     title: "SOBA Ontario Community Day 2025",
     excerpt: "Join us for our annual Community Day on Saturday, May 31st, 2025. A day of celebration, networking, and community building.",
-    date: "May 15, 2025",
+    date: "May 27, 2025",
     image: "/images/gallery/DSCF8816.jpg",
     category: "Events",
     featured: true,
