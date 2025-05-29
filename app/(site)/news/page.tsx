@@ -1,11 +1,8 @@
-import { Metadata } from "next";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "News & Updates - SOBA Ontario",
-  description: "Stay updated with the latest news, events, and announcements from SOBA Ontario community.",
-};
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 const newsArticles = [
   {
@@ -16,6 +13,7 @@ const newsArticles = [
     image: "/images/gallery/DSCF8816.jpg",
     category: "Events",
     featured: true,
+    tags: ["Events", "Community", "Networking", "Annual"]
   },
   {
     id: 3,
@@ -25,13 +23,42 @@ const newsArticles = [
     image: "/images/gallery/initial-launch.jpg",
     category: "Community",
     featured: false,
+    tags: ["Website", "Launch", "Technology", "Community"]
   },
-  
+  {
+    id: 4,
+    title: "Welcome New Members",
+    excerpt: "We're pleased to welcome new members to SOBA Ontario this quarter, bringing our total membership to 31 active members.",
+    date: "May 24, 2025",
+    image: "/images/gallery/IMG_0305.jpg",
+    category: "Membership",
+    featured: false,
+    tags: ["Membership", "Welcome", "Growth", "Community"]
+  },
 ];
 
 export default function NewsPage() {
-  const featuredArticle = newsArticles.find(article => article.featured);
-  const regularArticles = newsArticles.filter(article => !article.featured);
+  const [selectedTag, setSelectedTag] = useState<string>("All");
+  const searchParams = useSearchParams();
+  
+  // Set initial tag from URL parameter
+  useEffect(() => {
+    const tagFromUrl = searchParams.get('tag');
+    if (tagFromUrl) {
+      setSelectedTag(tagFromUrl);
+    }
+  }, [searchParams]);
+  
+  // Get all unique tags
+  const allTags = ["All", ...Array.from(new Set(newsArticles.flatMap(article => article.tags)))];
+  
+  // Filter articles by selected tag
+  const filteredArticles = selectedTag === "All" 
+    ? newsArticles 
+    : newsArticles.filter(article => article.tags.includes(selectedTag));
+    
+  const featuredArticle = filteredArticles.find(article => article.featured);
+  const regularArticles = filteredArticles.filter(article => !article.featured);
 
   return (
     <main>
@@ -44,6 +71,26 @@ export default function NewsPage() {
             <p className="text-lg text-gray-600 dark:text-gray-400">
               Stay connected with the latest happenings in the SOBA Ontario community
             </p>
+          </div>
+
+          {/* Tag Filter */}
+          <div className="mb-8">
+            <h2 className="mb-4 text-lg font-semibold text-black dark:text-white">Filter by Tag</h2>
+            <div className="flex flex-wrap gap-2">
+              {allTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                    selectedTag === tag
+                      ? "bg-primary text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Featured Article */}
@@ -134,31 +181,24 @@ export default function NewsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
+                  
+                  {/* Article Tags */}
+                  <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex flex-wrap gap-1">
+                      {article.tags.map((tag, tagIndex) => (
+                        <button
+                          key={tagIndex}
+                          onClick={() => setSelectedTag(tag)}
+                          className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full hover:bg-primary hover:text-white transition-colors"
+                        >
+                          {tag}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </article>
             ))}
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="mt-16 text-center">
-            <div className="rounded-lg bg-primary/10 p-8">
-              <h2 className="mb-4 text-2xl font-bold text-black dark:text-white">
-                Stay Updated
-              </h2>
-              <p className="mb-6 text-gray-600 dark:text-gray-400">
-                Subscribe to our newsletter to receive the latest news and updates from SOBA Ontario
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-                <button className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
-                  Subscribe
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </section>

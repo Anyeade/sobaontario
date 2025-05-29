@@ -212,12 +212,13 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
                 <h3 className="mb-4 text-lg font-semibold text-black dark:text-white">Tags</h3>
                 <div className="flex flex-wrap gap-2">
                   {article.tags.map((tag, index) => (
-                    <span
+                    <Link
                       key={index}
-                      className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+                      href={`/news?tag=${encodeURIComponent(tag)}`}
+                      className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary hover:bg-primary hover:text-white transition-colors"
                     >
                       {tag}
-                    </span>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -260,26 +261,6 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
                         </div>
                       </Link>
                     ))}
-                </div>
-              </div>
-
-              {/* Newsletter Signup */}
-              <div className="mt-6 rounded-lg bg-primary/10 p-6">
-                <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">
-                  Stay Updated
-                </h3>
-                <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                  Subscribe to receive the latest news from SOBA Ontario
-                </p>
-                <div className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  <button className="w-full rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors">
-                    Subscribe
-                  </button>
                 </div>
               </div>
             </div>
