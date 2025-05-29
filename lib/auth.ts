@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
         // Hardcoded admin login
         if (credentials.email === "admin@sobaontario.org" && credentials.password === "Mnbvcxzl@5") {
           return {
-            id: "admin-hardcoded",
+            id: "00000000-0000-0000-0000-000000000001",
             email: "admin@sobaontario.org",
             name: "SOBA Admin",
             role: "super_admin",

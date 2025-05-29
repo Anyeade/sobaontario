@@ -18,6 +18,25 @@ export async function GET(
 
     const { id } = await params;
 
+    // Special case for hardcoded admin user
+    if (id === "00000000-0000-0000-0000-000000000001") {
+      return NextResponse.json({
+        id: "00000000-0000-0000-0000-000000000001",
+        fullName: "SOBA Admin",
+        emailAddress: "admin@sobaontario.org",
+        telephoneNumber: null,
+        residentialAddress: null,
+        yearOfEntry: null,
+        profileImage: null,
+        isPaid: true,
+        registrationFee: null,
+        lastLogin: new Date(),
+        createdAt: new Date(),
+        role: "super_admin",
+        isActive: true,
+      });
+    }
+
     // Users can only access their own profile unless they're admin
     if (session.user.id !== id && session.user.role !== "admin" && session.user.role !== "super_admin") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });

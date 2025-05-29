@@ -59,10 +59,26 @@ export const donations = pgTable("donations", {
   donorName: text("donor_name"),
   donorEmail: text("donor_email"),
   amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
+  currency: text("currency").default("CAD"),
+  message: text("message"),
+  isAnonymous: boolean("is_anonymous").default(false),
   category: text("category").notNull(), // Sports & Recreation, Volunteer Programs, etc.
+  paymentMethod: text("payment_method").default("card"),
   stripePaymentIntentId: text("stripe_payment_intent_id"),
-  status: text("status").default("pending"), // pending, completed, failed
+  status: text("status").default("pending"), // pending, completed, failed, refunded
   createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const membershipTypes = pgTable("membership_types", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  name: text("name").notNull(),
+  description: text("description").notNull(),
+  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
+  duration: integer("duration").notNull(), // in months
+  benefits: text("benefits").notNull(), // JSON array of benefits
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const events = pgTable("events", {
@@ -82,8 +98,11 @@ export const news = pgTable("news", {
   content: text("content").notNull(),
   excerpt: text("excerpt"),
   author: text("author"),
-  imageUrl: text("image_url"),
+  category: text("category"),
+  tags: text("tags"), // JSON array of tags
+  featuredImage: text("featured_image"),
   isPublished: boolean("is_published").default(false),
+  publishedAt: timestamp("published_at"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -106,9 +125,10 @@ export const storeOrders = pgTable("store_orders", {
   memberId: uuid("member_id").references(() => members.id),
   customerEmail: text("customer_email").notNull(),
   customerName: text("customer_name").notNull(),
-  items: text("items").notNull(),
+  items: text("items").notNull(), // JSON array of items
   totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
-  status: text("status").default("pending"),
+  status: text("status").default("pending"), // pending, confirmed, shipped, delivered, cancelled
+  paymentStatus: text("payment_status").default("pending"), // pending, paid, failed, refunded
   shippingAddress: text("shipping_address").notNull(),
   stripePaymentIntentId: text("stripe_payment_intent_id"),
   trackingNumber: text("tracking_number"),
@@ -121,17 +141,11 @@ export const volunteers = pgTable("volunteers", {
   id: uuid("id").defaultRandom().primaryKey(),
   fullName: text("full_name").notNull(),
   emailAddress: text("email_address").notNull(),
-  phoneNumber: text("phone_number"),
-  address: text("address"),
-  volunteerAreas: text("volunteer_areas").notNull(), // JSON array of selected areas
-  availability: text("availability"), // Full-time, Part-time, Weekends, etc.
+  telephoneNumber: text("telephone_number"),
+  interests: text("interests").notNull(), // Areas of interest
   experience: text("experience"), // Previous volunteer experience
-  motivation: text("motivation"), // Why they want to volunteer
-  skills: text("skills"), // Special skills they can offer
-  isMember: boolean("is_member").default(false),
-  membershipId: uuid("membership_id"), // Reference to members table if applicable
-  status: text("status").default("pending"), // pending, approved, active, inactive
-  notes: text("notes"), // Admin notes
+  availability: text("availability"), // When they're available
+  status: text("status").default("pending"), // pending, approved, rejected
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
