@@ -11,7 +11,7 @@ const outreachPrograms = [
   {
     id: 1,
     title: "Educational Support Program",
-    description: "Providing scholarships and educational resources to deserving students in Nigeria and Canada.",
+    description: "Providing scholarships and educational resources to deserving students in Cameroon and Canada.",
     icon: "🎓",
     impact: "50+ students supported annually",
     activities: [
@@ -26,7 +26,7 @@ const outreachPrograms = [
     title: "Healthcare Initiatives",
     description: "Supporting healthcare facilities and medical outreach programs in underserved communities.",
     icon: "🏥",
-    impact: "3 healthcare facilities supported",
+    impact: "Healthcare facilities supported",
     activities: [
       "Medical equipment donations",
       "Healthcare professional training",
@@ -65,7 +65,7 @@ const outreachPrograms = [
 const partnerships = [
   {
     name: "Local Schools",
-    description: "Partnering with schools in Ontario to support Nigerian-Canadian students",
+    description: "Partnering with schools in Ontario to support Cameroonian-Canadian students",
     logo: "🏫"
   },
   {
@@ -80,7 +80,7 @@ const partnerships = [
   },
   {
     name: "International NGOs",
-    description: "Partnering with organizations for projects in Nigeria",
+    description: "Partnering with organizations for projects in Cameroon",
     logo: "🌍"
   }
 ];
@@ -95,7 +95,7 @@ export default function OutreachPage() {
               Community Outreach
             </h1>
             <p className="mb-10 text-lg">
-              Making a positive impact in communities across Ontario and Nigeria through 
+              Making a positive impact in communities across Ontario and Cameroon through 
               collaborative programs and sustainable initiatives
             </p>
           </div>

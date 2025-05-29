@@ -36,8 +36,8 @@ export default function ShopPage() {
     },
     {
       id: "2", 
-      name: "SOBA Ontario Tie - Navy Blue",
-      description: "Premium quality navy blue tie with SOBA Ontario emblem",
+      name: "SOBA Ontario Tie - Red",
+      description: "Premium quality red tie with SOBA Ontario emblem",
       price: "35.00",
       imageUrl: "https://www.bandshoppe.com/img/271280-black-poly-satin-concert-neck-tie.jpg",
       category: "Ties",

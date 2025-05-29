@@ -20,16 +20,6 @@ const upcomingEvents = [
     featured: true,
   },
   {
-    id: 2,
-    title: "Annual General Meeting 2025",
-    date: "March 15, 2025",
-    time: "6:00 PM - 9:00 PM",
-    location: "Toronto Community Center",
-    description: "Join us for our annual general meeting where we'll discuss community initiatives, elect new executives, and plan for the year ahead.",
-    image: "/images/gallery/DSCF7024.jpg",
-    type: "Meeting",
-  },
-  {
     id: 3,
     title: "SOBA Ontario Family Picnic",
     date: "June 22, 2025",
@@ -39,7 +29,6 @@ const upcomingEvents = [
     image: "/images/gallery/DSCF7024.jpg",
     type: "Social",
   },
- 
 ];
 
 const pastEvents = [
@@ -47,14 +36,7 @@ const pastEvents = [
     id: 5,
     title: "Christmas Celebration 2024",
     date: "December 16, 2024",
-    description: "A wonderful evening of celebration with traditional Nigerian dishes, music, and fellowship.",
-    image: "/images/gallery/DSCF7024.jpg",
-  },
-  {
-    id: 6,
-    title: "Independence Day Celebration 2024",
-    date: "October 1, 2024",
-    description: "Celebrating Nigeria's independence with cultural performances and community bonding.",
+    description: "A wonderful evening of celebration with traditional dishes, music, and fellowship.",
     image: "/images/gallery/DSCF7024.jpg",
   },
   {

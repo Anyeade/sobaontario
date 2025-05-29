@@ -8,6 +8,16 @@ export const metadata: Metadata = {
 
 const galleryImages = [
   {
+    src: "/images/gallery/Fraternity Weekend.jpg",
+    alt: "SOBA Ontario members during offertory procession on their Fraternity Weekend celebrations",
+    title: "Fraternity Weekend - August 2024",
+  },
+  {
+    src: "/images/gallery/st-joseph-feast-day.jpg",
+    alt: "SOBA Ontario members during singing during Mass as they Celebrate St Joseph Feast Day",
+    title: "St Joseph Feast Day - March 2025",
+  },
+  {
     src: "/images/gallery/DSCF8816.jpg",
     alt: "SOBA Ontario Community Event",
     title: "Community Gathering",
@@ -26,11 +36,6 @@ const galleryImages = [
     src: "/images/gallery/IMG_0305.jpg",
     alt: "SOBA Ontario Activity",
     title: "Community Activity",
-  },
-  {
-    src: "/images/gallery/IMG_0301-75x50_c.jpg",
-    alt: "SOBA Ontario Moment",
-    title: "Special Moment",
   },
 ];
 

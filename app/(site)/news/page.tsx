@@ -18,15 +18,6 @@ const newsArticles = [
     featured: true,
   },
   {
-    id: 2,
-    title: "New Member Benefits Program Launched",
-    excerpt: "We're excited to announce enhanced member benefits including increased death benefits and new educational achievement rewards.",
-    date: "April 20, 2025",
-    image: "/images/gallery/DSCF7024.jpg",
-    category: "Announcements",
-    featured: false,
-  },
-  {
     id: 3,
     title: "Successful Fundraising Initiative",
     excerpt: "Thanks to our generous community, we've raised significant funds for our community outreach programs.",
@@ -38,8 +29,8 @@ const newsArticles = [
   {
     id: 4,
     title: "Welcome New Members",
-    excerpt: "We're pleased to welcome 5 new members to SOBA Ontario this quarter, bringing our total membership to over 35 active members.",
-    date: "February 28, 2025",
+    excerpt: "We're pleased to welcome new members to SOBA Ontario this quarter, bringing our total membership to 31 active members.",
+    date: "May 24, 2025",
     image: "/images/gallery/IMG_0305.jpg",
     category: "Membership",
     featured: false,
