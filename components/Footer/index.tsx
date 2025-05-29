@@ -292,9 +292,14 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <p>
-                &copy; {new Date().getFullYear()} SOBA Ontario. All rights reserved
-              </p>
+              <div className="text-center">
+                <p className="mb-1">
+                  &copy; {new Date().getFullYear()} SOBA Ontario. All rights reserved
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Made with <span className="text-red-500">❤️</span> by Hans Ade
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
