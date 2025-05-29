@@ -19,23 +19,23 @@ const galleryImages = [
   },
   {
     src: "/images/gallery/DSCF8816.jpg",
-    alt: "SOBA Ontario Community Event",
-    title: "Community Gathering",
+    alt: "SOBA Ontario Campus Surfing",
+    title: "Campus Surfing",
   },
   {
     src: "/images/gallery/DSCF7024.jpg",
     alt: "SOBA Ontario Members",
-    title: "Member Celebration",
+    title: "Sasse Student Studying",
   },
   {
     src: "/images/gallery/IMG_20141211_173823.jpg",
-    alt: "SOBA Ontario Event",
-    title: "Annual Event",
+    alt: "SOBA Ontario Campus open visit",
+    title: "Campus open visit",
   },
   {
     src: "/images/gallery/IMG_0305.jpg",
-    alt: "SOBA Ontario Activity",
-    title: "Community Activity",
+    alt: "SOBA Ontario School Campus",
+    title: "Our School Campus",
   },
 ];
 

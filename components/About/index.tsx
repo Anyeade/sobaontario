@@ -29,8 +29,8 @@ const About = () => {
               className="animate_left relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
               <Image
-                src="/images/gallery/DSCF7024.jpg"
-                alt="SOBA Ontario Community"
+                src="/images/gallery/initial-launch.jpg"
+                alt="SOBA Ontario Initial Launch"
                 className="rounded-lg"
                 fill
                 style={{ objectFit: "cover" }}
@@ -178,8 +178,8 @@ const About = () => {
               className="animate_right relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
             >
               <Image
-                src="/images/gallery/IMG_20141211_173823.jpg"
-                alt="SOBA Ontario Values"
+                src="/images/gallery/st-joseph-feast-day.jpg"
+                alt="SOBA Ontario St Joseph Feast Day"
                 className="rounded-lg"
                 fill
                 style={{ objectFit: "cover" }}

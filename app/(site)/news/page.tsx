@@ -19,22 +19,14 @@ const newsArticles = [
   },
   {
     id: 3,
-    title: "Successful Fundraising Initiative",
-    excerpt: "Thanks to our generous community, we've raised significant funds for our community outreach programs.",
-    date: "March 10, 2025",
-    image: "/images/gallery/IMG_20141211_173823.jpg",
+    title: "SOBA Ontario Initial Launch",
+    excerpt: "SOBA Ontario was officially launched our website  on May 27, 2025, with a special event at the Sasse community center",
+    date: "May 27, 2025",
+    image: "/images/gallery/initial-launch.jpg",
     category: "Community",
     featured: false,
   },
-  {
-    id: 4,
-    title: "Welcome New Members",
-    excerpt: "We're pleased to welcome new members to SOBA Ontario this quarter, bringing our total membership to 31 active members.",
-    date: "May 24, 2025",
-    image: "/images/gallery/IMG_0305.jpg",
-    category: "Membership",
-    featured: false,
-  },
+  
 ];
 
 export default function NewsPage() {
