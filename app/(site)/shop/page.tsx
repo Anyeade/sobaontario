@@ -18,7 +18,6 @@ interface StoreItem {
 export default function ShopPage() {
   const [items, setItems] = useState<StoreItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { state } = useCart();
@@ -117,19 +116,14 @@ export default function ShopPage() {
           combinedItems.push(...uniqueSampleItems);
           setItems(combinedItems);
           
-          if (data.length === 0) {
-            setError("Using sample data - no items in database yet");
-          }
         } else {
           // Use sample data if API fails
           setItems(sampleItems);
-          setError("Using sample data - database connection failed");
         }
       } catch (error) {
         console.error("Error fetching store items:", error);
         // Use sample data as fallback
         setItems(sampleItems);
-        setError("Using sample data - database not connected");
       } finally {
         setLoading(false);
       }
@@ -187,12 +181,6 @@ export default function ShopPage() {
                 )}
               </button>
             </div>
-
-            {error && (
-              <div className="mb-6 rounded-lg bg-yellow-50 p-4 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
-                {error}
-              </div>
-            )}
           </div>
         </div>
       </section>
