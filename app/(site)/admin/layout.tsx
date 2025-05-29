@@ -87,7 +87,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Main content */}
       <div className="ml-64 flex-1">
-        <header className="bg-white shadow-sm dark:bg-black">
+        <header className="sticky top-0 z-40 bg-white shadow-sm dark:bg-black border-b border-gray-200 dark:border-gray-700">
           <div className="flex h-16 items-center justify-between px-6">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
               Admin Dashboard
@@ -109,7 +109,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </header>
 
-        <main className="p-6">
+        <main className="p-6 pt-8">
           {children}
         </main>
       </div>
