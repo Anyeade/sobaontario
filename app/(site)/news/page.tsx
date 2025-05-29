@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 const newsArticles = [
@@ -37,7 +37,7 @@ const newsArticles = [
   },
 ];
 
-export default function NewsPage() {
+function NewsContent() {
   const [selectedTag, setSelectedTag] = useState<string>("All");
   const searchParams = useSearchParams();
   
@@ -203,5 +203,18 @@ export default function NewsPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function NewsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+        <p className="mt-4 text-gray-600 dark:text-gray-400">Loading news...</p>
+      </div>
+    </div>}>
+      <NewsContent />
+    </Suspense>
   );
 } 
