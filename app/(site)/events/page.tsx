@@ -8,17 +8,7 @@ export const metadata: Metadata = {
 };
 
 const upcomingEvents = [
-  {
-    id: 4,
-    title: "MECA Toronto Gala 2025",
-    date: "May 17, 2025",
-    time: "TBA",
-    location: "Toronto",
-    description: "May 17th, Soban Emeritus Armsty will represent us at the 2025 MECA Toronto gala & bring our support of $150 with him",
-    image: "/images/gallery/DSCF8816.jpg",
-    type: "Community",
-    featured: false,
-  },
+ 
   {
     id: 1,
     title: "SOBA Ontario Community Day 2025",
@@ -26,7 +16,7 @@ const upcomingEvents = [
     time: "9:30 AM - 12:30 PM",
     location: "FEED Scarborough",
     description: "Saturday May 31st is SOBA Ontario Community Day. This year we will be helping out at FEED Scarborough from 9:30AM - 12:30PM. Stay tuned for more info on this.",
-    image: "/images/gallery/DSCF8816.jpg",
+    image: "https://images.pixieset.com/35334687/0239970942a5e240f888d55d082c23e9-large.JPG",
     type: "Community",
     featured: true,
   },
@@ -37,7 +27,7 @@ const upcomingEvents = [
     time: "Weekend Event",
     location: "Calgary",
     description: "June 6th - 8th 2025, SOBA Calgary Fraternity Weekend. As discussed at the last GA, there will be a voluntary drive to supplement the standard $150 we give out to sister groups",
-    image: "/images/gallery/DSCF7024.jpg",
+    image: "/images/gallery/fraternity-pic.jpeg",
     type: "Fraternity",
     featured: false,
   },
@@ -59,7 +49,7 @@ const upcomingEvents = [
     time: "11:00 AM - 6:00 PM",
     location: "Centennial Park, Toronto",
     description: "Bring your family for a day of fun, food, and fellowship. Activities include games, BBQ, and networking opportunities.",
-    image: "/images/gallery/DSCF7024.jpg",
+    image: "https://images.pixieset.com/35334687/6e93d693a01bb2160a7ed879fb902ce6-small.JPG",
     type: "Social",
   },
   {
@@ -87,6 +77,16 @@ const pastEvents = [
     type: "Volunteer",
   },
   {
+    id: 4,
+    title: "MECA Toronto Gala 2025",
+    date: "May 17, 2025",
+    time: "TBA",
+    location: "Toronto",
+    description: "May 17th, Soban Emeritus Armsty will represent us at the 2025 MECA Toronto gala & bring our support of $150 with him",
+    image: "https://images.pixieset.com/35334687/ee1989e8c0fecae3b1b53ebcdd64010b-small.JPG",
+    type: "Community",
+  },
+  {
     id: 11,
     title: "SOBA Ontario Christmas Party",
     date: "December 14, 2024",
@@ -106,16 +106,7 @@ const pastEvents = [
     image: "/images/gallery/st-joseph-feast-day.jpg",
     type: "Religious",
   },
-  {
-    id: 8,
-    title: "Professional Networking Evening",
-    date: "September 14, 2024",
-    time: "7:00 PM - 10:00 PM",
-    location: "Downtown Toronto",
-    description: "Connect with fellow Sobans in various professional fields. Share experiences and explore collaboration opportunities.",
-    image: "/images/gallery/DSCF7024.jpg",
-    type: "Networking",
-  },
+  
 ];
 
 export default function EventsPage() {
