@@ -66,13 +66,20 @@ const PaymentMethodSelector = ({
 
         {/* Interac Payment Option */}
         <div
-          className={`cursor-pointer rounded-lg border-2 p-4 transition-all hover:border-primary ${
+          className={`cursor-pointer rounded-lg border-2 p-4 transition-all hover:border-primary relative ${
             selected === "interac"
               ? "border-primary bg-primary/5"
               : "border-gray-200 dark:border-gray-700"
           }`}
           onClick={() => handleMethodChange("interac")}
         >
+          {/* Blinking Red Badge */}
+          <div className="absolute -top-2 -right-2 z-10">
+            <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full animate-pulse">
+              NEW
+            </span>
+          </div>
+          
           <div className="flex items-center space-x-3">
             <div
               className={`h-4 w-4 rounded-full border-2 ${

@@ -49,7 +49,7 @@ const upcomingEvents = [
     time: "11:00 AM - 6:00 PM",
     location: "Centennial Park, Toronto",
     description: "Bring your family for a day of fun, food, and fellowship. Activities include games, BBQ, and networking opportunities.",
-    image: "/images/gallery/picnic.jpg",
+    image: "/images/gallery/picnic.jpeg",
     type: "Social",
   },
   {
@@ -83,7 +83,7 @@ const pastEvents = [
     time: "TBA",
     location: "Toronto",
     description: "May 17th, Soban Emeritus Armsty will represent us at the 2025 MECA Toronto gala & bring our support of $150 with him",
-    image: "/images/gallery/meca.jpg",
+    image: "/images/gallery/meca.jpeg",
     type: "Community",
   },
   {
