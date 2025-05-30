@@ -57,6 +57,18 @@ export async function POST(request: NextRequest) {
         paymentMethod: validatedData.paymentMethod,
       },
       customer_email: validatedData.donorEmail || undefined,
+      // Add ACSS debit mandate options for Interac payments
+      ...(validatedData.paymentMethod === "interac" && {
+        payment_method_options: {
+          acss_debit: {
+            mandate_options: {
+              payment_schedule: "sporadic",
+              transaction_type: "personal",
+            },
+            verification_method: "automatic",
+          }
+        }
+      })
     });
 
     return NextResponse.json({ url: session.url });
