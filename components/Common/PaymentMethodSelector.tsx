@@ -25,7 +25,7 @@ const PaymentMethodSelector = ({
       <label className="mb-3 block text-sm font-medium text-dark dark:text-white">
         Payment Method
       </label>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Card Payment Option */}
         <div
           className={`cursor-pointer rounded-lg border-2 p-4 transition-all hover:border-primary ${

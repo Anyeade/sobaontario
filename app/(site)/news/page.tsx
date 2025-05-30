@@ -18,23 +18,14 @@ const newsArticles = [
   {
     id: 3,
     title: "SOBA Ontario Initial Launch",
-    excerpt: "SOBA Ontario officially launched its website on May 27, 2025, with a special event at the Sasse community center",
+    excerpt: "SOBA Ontario officially launched its website on May 27, 2025",
     date: "May 27, 2025",
     image: "/images/gallery/initial-launch.jpg",
     category: "Community",
     featured: false,
     tags: ["Website", "Launch", "Technology", "Community"]
   },
-  {
-    id: 4,
-    title: "Welcome New Members",
-    excerpt: "We're pleased to welcome new members to SOBA Ontario this quarter, bringing our total membership to 31 active members.",
-    date: "May 24, 2025",
-    image: "/images/gallery/IMG_0305.jpg",
-    category: "Membership",
-    featured: false,
-    tags: ["Membership", "Welcome", "Growth", "Community"]
-  },
+  
 ];
 
 function NewsContent() {

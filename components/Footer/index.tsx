@@ -297,7 +297,7 @@ const Footer = () => {
                   &copy; {new Date().getFullYear()} SOBA Ontario. All rights reserved
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Made with <span className="text-red-500">❤️</span> by Hans Ade
+                  Made with <span className="text-red-500">❤️</span> by Hans and Etienne
                 </p>
               </div>
             </motion.div>

@@ -42,27 +42,7 @@ const upcomingEvents = [
     type: "Meeting",
     featured: false,
   },
-  {
-    id: 3,
-    title: "SOBA Ontario Family Picnic",
-    date: "June 22, 2025",
-    time: "11:00 AM - 6:00 PM",
-    location: "Centennial Park, Toronto",
-    description: "Bring your family for a day of fun, food, and fellowship. Activities include games, BBQ, and networking opportunities.",
-    image: "/images/gallery/picnic.jpeg",
-    type: "Social",
-  },
-  {
-    id: 9,
-    title: "Fraternity Weekend Celebration",
-    date: "August 4, 2025",
-    time: "11:30 AM",
-    location: "Maria Goretti Parish, 717 Kennedy Rd, Scarborough, ON M1K 3N8",
-    description: "Join us for the Fraternity Weekend Celebration on Sunday August 4th 2025 at Maria Goretti Parish. Special SOBA participation includes choir support, thanksgiving mass offertory procession with song and dance, and post-Mass reception. 5 photos of SOBA Ontario will be featured in the church bulletin.",
-    image: "/images/gallery/fraternity-week.jpg",
-    type: "Fraternity",
-    featured: true,
-  },
+  
 ];
 
 const pastEvents = [
@@ -97,14 +77,34 @@ const pastEvents = [
     type: "Social",
   },
   {
+    id: 9,
+    title: "Fraternity Weekend Celebration",
+    date: "August 4, 2024",
+    time: "11:30 AM",
+    location: "Maria Goretti Parish, 717 Kennedy Rd, Scarborough, ON M1K 3N8",
+    description: "Join us for the Fraternity Weekend Celebration on Sunday August 4th 2024 at Maria Goretti Parish. Special SOBA participation includes choir support, thanksgiving mass offertory procession with song and dance, and post-Mass reception. 5 photos of SOBA Ontario will be featured in the church bulletin.",
+    image: "/images/gallery/fraternity-week.jpg",
+    type: "Fraternity",
+  },
+  {
     id: 7,
     title: "Saint Joseph Feast Day Mass",
-    date: "March 23, 2025",
+    date: "March 23, 2024",
     time: "11:30 AM",
     location: "Maria Goretti Parish, Scarborough",
     description: "SOBA Ontario participated in the Saint Joseph Feast Day Mass with special choir support, offertory procession with song and dance, and post-Mass reception.",
     image: "/images/gallery/st-joseph-feast-day.jpg",
     type: "Religious",
+  },
+  {
+    id: 12,
+    title: "Soba Ontario General Assembly Meeting",
+    date: "April 26, 2024",
+    time: "TBA",
+    location: "London, Ontario",
+    description: "General Assembly Meeting held in London, Ontario.",
+    image: "/images/gallery/initial-launch.jpg",
+    type: "Meeting",
   },
   
 ];
