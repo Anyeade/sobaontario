@@ -78,8 +78,8 @@ export async function POST(request: NextRequest) {
     }));
 
     // Configure payment method types based on selection
-    const paymentMethodTypes = paymentMethod === "interac" 
-      ? ["interac_present"] 
+    const paymentMethodTypes: ("card" | "acss_debit")[] = paymentMethod === "interac" 
+      ? ["acss_debit"] 
       : ["card"];
 
     // Create Stripe checkout session
@@ -103,14 +103,6 @@ export async function POST(request: NextRequest) {
       shipping_address_collection: {
         allowed_countries: ["CA"], // Canada only
       },
-      // Add Interac-specific configurations
-      ...(paymentMethod === "interac" && {
-        payment_method_options: {
-          interac_present: {
-            // Interac specific options can be added here
-          }
-        }
-      })
     });
 
     return NextResponse.json({ url: session.url });

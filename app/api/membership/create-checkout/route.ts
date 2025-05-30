@@ -52,8 +52,8 @@ export async function POST(request: NextRequest) {
     }).returning();
 
     // Configure payment method types based on selection
-    const paymentMethodTypes = validatedData.paymentMethod === "interac" 
-      ? ["interac_present"] 
+    const paymentMethodTypes: ("card" | "acss_debit")[] = validatedData.paymentMethod === "interac" 
+      ? ["acss_debit"] 
       : ["card"];
 
     // Create Stripe checkout session
@@ -81,14 +81,6 @@ export async function POST(request: NextRequest) {
         paymentMethod: validatedData.paymentMethod,
       },
       customer_email: validatedData.emailAddress,
-      // Add Interac-specific configurations
-      ...(validatedData.paymentMethod === "interac" && {
-        payment_method_options: {
-          interac_present: {
-            // Interac specific options can be added here
-          }
-        }
-      })
     });
 
     return NextResponse.json({ url: session.url });
