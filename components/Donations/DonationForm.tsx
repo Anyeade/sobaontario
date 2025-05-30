@@ -61,12 +61,19 @@ const DonationForm = ({ categories }: DonationFormProps) => {
         body: JSON.stringify(formData),
       });
 
-      const { url } = await response.json();
+      const data = await response.json();
       
-      if (url) {
-        window.location.href = url;
+      if (!response.ok) {
+        // Handle API errors
+        console.error("API Error:", data);
+        toast.error(data.error || "Failed to process donation. Please try again.");
+        return;
+      }
+      
+      if (data.url) {
+        window.location.href = data.url;
       } else {
-        throw new Error("Failed to create checkout session");
+        throw new Error("No checkout URL received");
       }
     } catch (error) {
       console.error("Error:", error);

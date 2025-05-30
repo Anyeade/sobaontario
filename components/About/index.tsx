@@ -189,6 +189,51 @@ const About = () => {
         </div>
       </section>
       {/* <!-- ===== About Two End ===== --> */}
+
+      {/* <!-- ===== Sobanese Acknowledgment Start ===== --> */}
+      <section className="py-20 lg:py-25 xl:py-30">
+        <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: -20,
+              },
+
+              visible: {
+                opacity: 1,
+                y: 0,
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_top text-center"
+          >
+            <div className="mx-auto max-w-4xl rounded-lg bg-gradient-to-r from-primary/10 to-secondary/10 p-8 shadow-solid-8 dark:bg-gradient-to-r dark:from-primary/20 dark:to-secondary/20">
+              <h2 className="mb-6 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle2">
+                Acknowledging Our 
+                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark">
+                  {" "}Sobanese Allies
+                </span>
+              </h2>
+              <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                <strong>Sobanese -</strong> We take pride in acknowledging the support to us from our Sobanese allies over the world and it is with immense gratitude that we stand firm in supporting your works. You and the kids makes our community to keep soaring.
+              </p>
+              <div className="mt-6 flex justify-center">
+                <div className="flex items-center gap-2 text-primary">
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                  </svg>
+                  <span className="font-semibold">With Gratitude & Unity</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      {/* <!-- ===== Sobanese Acknowledgment End ===== --> */}
     </>
   );
 };
