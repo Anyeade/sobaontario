@@ -16,7 +16,7 @@ const upcomingEvents = [
     time: "9:30 AM - 12:30 PM",
     location: "FEED Scarborough",
     description: "Saturday May 31st is SOBA Ontario Community Day. This year we will be helping out at FEED Scarborough from 9:30AM - 12:30PM. Stay tuned for more info on this.",
-    image: "https://images.pixieset.com/35334687/0239970942a5e240f888d55d082c23e9-large.JPG",
+    image: "/images/gallery/feed.jpg",
     type: "Community",
     featured: true,
   },
@@ -49,7 +49,7 @@ const upcomingEvents = [
     time: "11:00 AM - 6:00 PM",
     location: "Centennial Park, Toronto",
     description: "Bring your family for a day of fun, food, and fellowship. Activities include games, BBQ, and networking opportunities.",
-    image: "https://images.pixieset.com/35334687/6e93d693a01bb2160a7ed879fb902ce6-small.JPG",
+    image: "/images/gallery/picnic.jpg",
     type: "Social",
   },
   {
@@ -83,7 +83,7 @@ const pastEvents = [
     time: "TBA",
     location: "Toronto",
     description: "May 17th, Soban Emeritus Armsty will represent us at the 2025 MECA Toronto gala & bring our support of $150 with him",
-    image: "https://images.pixieset.com/35334687/ee1989e8c0fecae3b1b53ebcdd64010b-small.JPG",
+    image: "/images/gallery/meca.jpg",
     type: "Community",
   },
   {

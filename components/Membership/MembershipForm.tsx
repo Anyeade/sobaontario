@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import PaymentMethodSelector from "@/components/Common/PaymentMethodSelector";
 
 interface MembershipFormData {
   fullName: string;
@@ -24,6 +25,7 @@ const MembershipForm = () => {
     confirmPassword: "",
     potentialMembers: "",
   });
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "interac">("card");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -79,6 +81,7 @@ const MembershipForm = () => {
           emailAddress: formData.emailAddress,
           password: formData.password,
           potentialMembers: formData.potentialMembers,
+          paymentMethod,
         }),
       });
 
@@ -275,17 +278,26 @@ const MembershipForm = () => {
         />
       </div>
 
+      {/* Payment Method Selection */}
+      <PaymentMethodSelector 
+        onPaymentMethodChange={setPaymentMethod}
+        selectedMethod={paymentMethod}
+      />
+
       <button
         type="submit"
         disabled={isLoading}
         className="w-full rounded-lg bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90 disabled:opacity-50"
       >
-        {isLoading ? "Processing..." : "Pay $100 & Join SOBA Ontario"}
+        {isLoading ? "Processing..." : `Pay $100 via ${paymentMethod === "interac" ? "Interac e-Transfer" : "Card"} & Join SOBA Ontario`}
       </button>
 
       <p className="text-sm text-gray-600 dark:text-gray-400">
         By submitting this form, you agree to pay the $100 membership fee and join SOBA Ontario.
-        You will be redirected to Stripe for secure payment processing.
+        {paymentMethod === "interac" ? 
+          " You'll be redirected to your bank's secure login to complete the Interac e-Transfer." :
+          " You will be redirected to Stripe for secure payment processing."
+        }
       </p>
     </form>
   );

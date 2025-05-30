@@ -16,6 +16,7 @@ const membershipSchema = z.object({
     "Password must contain at least one uppercase letter, one lowercase letter, and one number"
   ),
   potentialMembers: z.string().optional(),
+  paymentMethod: z.enum(["card", "interac"]).default("card"),
 });
 
 export async function POST(request: NextRequest) {
@@ -50,9 +51,14 @@ export async function POST(request: NextRequest) {
       isPaid: false,
     }).returning();
 
+    // Configure payment method types based on selection
+    const paymentMethodTypes = validatedData.paymentMethod === "interac" 
+      ? ["interac_present"] 
+      : ["card"];
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
+      payment_method_types: paymentMethodTypes,
       line_items: [
         {
           price_data: {
@@ -72,8 +78,17 @@ export async function POST(request: NextRequest) {
       metadata: {
         memberId: newMember.id,
         type: "membership",
+        paymentMethod: validatedData.paymentMethod,
       },
       customer_email: validatedData.emailAddress,
+      // Add Interac-specific configurations
+      ...(validatedData.paymentMethod === "interac" && {
+        payment_method_options: {
+          interac_present: {
+            // Interac specific options can be added here
+          }
+        }
+      })
     });
 
     return NextResponse.json({ url: session.url });

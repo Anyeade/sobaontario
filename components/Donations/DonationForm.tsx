@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import PaymentMethodSelector from "@/components/Common/PaymentMethodSelector";
 
 interface DonationCategory {
   name: string;
@@ -26,6 +27,7 @@ const DonationForm = ({ categories }: DonationFormProps) => {
     amount: 25,
     category: categories[0]?.name || "",
   });
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "interac">("card");
   const [isLoading, setIsLoading] = useState(false);
 
   const predefinedAmounts = [25, 50, 100, 250, 500];
@@ -58,7 +60,10 @@ const DonationForm = ({ categories }: DonationFormProps) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          paymentMethod,
+        }),
       });
 
       const data = await response.json();
@@ -177,17 +182,26 @@ const DonationForm = ({ categories }: DonationFormProps) => {
         </div>
       </div>
 
+      {/* Payment Method Selection */}
+      <PaymentMethodSelector 
+        onPaymentMethodChange={setPaymentMethod}
+        selectedMethod={paymentMethod}
+      />
+
       <button
         type="submit"
         disabled={isLoading || formData.amount < 5}
         className="w-full rounded-lg bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90 disabled:opacity-50"
       >
-        {isLoading ? "Processing..." : `Donate $${formData.amount.toFixed(2)} CAD`}
+        {isLoading ? "Processing..." : `Donate $${formData.amount.toFixed(2)} CAD via ${paymentMethod === "interac" ? "Interac e-Transfer" : "Card"}`}
       </button>
 
       <p className="text-sm text-gray-600 dark:text-gray-400">
         Your donation will be processed securely through Stripe. 
-        You will receive a receipt via email if you provide your email address.
+        {paymentMethod === "interac" ? 
+          " You'll be redirected to your bank's secure login to complete the Interac e-Transfer." :
+          " You will receive a receipt via email if you provide your email address."
+        }
       </p>
     </form>
   );

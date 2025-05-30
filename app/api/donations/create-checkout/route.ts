@@ -9,6 +9,7 @@ const donationSchema = z.object({
   donorEmail: z.string().email().optional().or(z.literal("")),
   amount: z.number().min(5, "Minimum donation is $5"),
   category: z.string().min(1, "Category is required"),
+  paymentMethod: z.enum(["card", "interac"]).default("card"),
 });
 
 export async function POST(request: NextRequest) {
@@ -25,9 +26,14 @@ export async function POST(request: NextRequest) {
       status: "pending",
     }).returning();
 
+    // Configure payment method types based on selection
+    const paymentMethodTypes = validatedData.paymentMethod === "interac" 
+      ? ["interac_present"] 
+      : ["card"];
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
+      payment_method_types: paymentMethodTypes,
       line_items: [
         {
           price_data: {
@@ -48,8 +54,17 @@ export async function POST(request: NextRequest) {
         donationId: newDonation.id,
         type: "donation",
         category: validatedData.category,
+        paymentMethod: validatedData.paymentMethod,
       },
       customer_email: validatedData.donorEmail || undefined,
+      // Add Interac-specific configurations
+      ...(validatedData.paymentMethod === "interac" && {
+        payment_method_options: {
+          interac_present: {
+            // Interac specific options can be added here
+          }
+        }
+      })
     });
 
     return NextResponse.json({ url: session.url });

@@ -28,6 +28,7 @@ const storeOrderSchema = z.object({
     postal_code: z.string().min(1, "Postal code is required"),
     country: z.string().default("CA"),
   }),
+  paymentMethod: z.enum(["card", "interac"]).default("card"),
 });
 
 export async function POST(request: NextRequest) {
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = storeOrderSchema.parse(body);
 
-    const { items, customerInfo, shippingAddress } = validatedData;
+    const { items, customerInfo, shippingAddress, paymentMethod } = validatedData;
 
     // Calculate total amount
     const totalAmount = items.reduce((sum, item) => {
@@ -76,9 +77,14 @@ export async function POST(request: NextRequest) {
       quantity: item.quantity,
     }));
 
+    // Configure payment method types based on selection
+    const paymentMethodTypes = paymentMethod === "interac" 
+      ? ["interac_present"] 
+      : ["card"];
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
+      payment_method_types: paymentMethodTypes,
       line_items: lineItems,
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/shop/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -90,12 +96,21 @@ export async function POST(request: NextRequest) {
         customer_email: customerInfo.email,
         total_amount: totalAmount.toString(),
         items_count: items.length.toString(),
+        paymentMethod: paymentMethod,
       },
       customer_email: customerInfo.email,
       billing_address_collection: "required",
       shipping_address_collection: {
         allowed_countries: ["CA"], // Canada only
       },
+      // Add Interac-specific configurations
+      ...(paymentMethod === "interac" && {
+        payment_method_options: {
+          interac_present: {
+            // Interac specific options can be added here
+          }
+        }
+      })
     });
 
     return NextResponse.json({ url: session.url });
