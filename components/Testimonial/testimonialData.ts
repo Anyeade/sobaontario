@@ -35,4 +35,12 @@ export const testimonialData: Testimonial[] = [
     content:
       "What started as informal gatherings has evolved into a registered non-profit organization that truly serves our community. The member benefits and support programs are comprehensive and meaningful.",
   },
+  {
+    id: 5,
+    name: "Armstrong Sache",
+    designation: "Pioneer President, Class of '87",
+    image: image1,
+    content:
+      "SOBA Ontario has grown significantly since its founding. It's inspiring to see the community thrive and support new members.",
+  },
 ];

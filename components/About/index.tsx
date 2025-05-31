@@ -61,14 +61,14 @@ const About = () => {
                 Saint Joseph\'s College Sasse Alumni
               </span>
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                Our Origin and
+                Our Origin and  
                 <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark">
-                   Mission
+                  Mission
                 </span>
               </h2>
               <p>
-                SOBA Ontario was founded in 2016 by forward-thinking individuals from the Class of '87 
-                in the Greater Toronto Area. Initially a close-knit community, we evolved into a 
+                SOBA Ontario was founded in 2016 by forward-thinking individuals from the Class of '87
+                in the Greater Toronto Area, including Livinus Eleanya, Martin Mote, Elvis Nquenya, Gerald Muchu, and Armstrong Sache of the 87, who served as the pioneer president. Initially a close-knit community, we evolved into a 
                 registered not-for-profit organization supporting all Sasse College alumni in Ontario.
               </p>
 
