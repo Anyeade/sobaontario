@@ -8,6 +8,36 @@ export const metadata: Metadata = {
 
 const galleryImages = [
   {
+    src: "/images/gallery/new/1.jpg",
+    alt: "SOBA Ontario members volunteering at Feed Scarborough",
+    title: "Volunteering at Feed Scarborough - May 31st, 2024",
+  },
+  {
+    src: "/images/gallery/new/2.jpg",
+    alt: "SOBA Ontario members helping at Feed Scarborough",
+    title: "Volunteering at Feed Scarborough - May 31st, 2024",
+  },
+  {
+    src: "/images/gallery/new/3.jpg",
+    alt: "SOBA Ontario members during Feed Scarborough volunteering",
+    title: "Volunteering at Feed Scarborough - May 31st, 2024",
+  },
+  {
+    src: "/images/gallery/new/4.jpg",
+    alt: "SOBA Ontario members serving at Feed Scarborough",
+    title: "Volunteering at Feed Scarborough - May 31st, 2024",
+  },
+  {
+    src: "/images/gallery/new/5.jpg",
+    alt: "SOBA Ontario members volunteering at Feed Scarborough",
+    title: "Volunteering at Feed Scarborough - May 31st, 2024",
+  },
+  {
+    src: "/images/gallery/new/6.jpg",
+    alt: "SOBA Ontario members helping at Feed Scarborough",
+    title: "Volunteering at Feed Scarborough - May 31st, 2024",
+  },
+  {
     src: "/images/gallery/Fraternity Weekend.jpg",
     alt: "SOBA Ontario members during offertory procession on their Fraternity Weekend celebrations",
     title: "Fraternity Weekend - August 2024",
