@@ -56,8 +56,8 @@ const Footer = () => {
                 
                 <div className="mb-3">
                   <p className="text-itemtitle font-medium text-black dark:text-white">
-                    46 Olde Town Road<br />
-                    Brampton, ON, L6X 4T8<br />
+                     4030 Sheppard Ave E,<br />
+                   Scarborough, ON M1S 1S6<br />
                     Canada
                   </p>
                 </div>
